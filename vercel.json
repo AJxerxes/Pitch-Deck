@@ -1,0 +1,35 @@
+{
+  "version": 2,
+  "name": "duoweave-pitch-deck",
+  "builds": [
+    {
+      "src": "pitch-deck.html",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/",
+      "dest": "/pitch-deck.html"
+    },
+    {
+      "src": "/presentation/(.*)",
+      "dest": "/presentation/$1"
+    },
+    {
+      "src": "/assets/(.*)",
+      "dest": "/assets/$1"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    }
+  ]
+}

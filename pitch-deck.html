@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DuoWeave YC Pitch Deck</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <style>
+      @font-face {
+        font-family: 'Merriweather';
+        src: url('presentation/Merriweather_36pt-Light.ttf') format('truetype');
+        font-weight: 300;
+        font-style: normal;
+      }
+    </style>
+    <style>
+      body {
+        font-family: 'Merriweather', 'Quicksand', serif;
+        overflow: hidden;
+      }
+      .slide {
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        transition: opacity 0.5s ease-in-out;
+        padding: 4rem 5rem;
+      }
+      .slide.active {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .title-gradient {
+        background: linear-gradient(to right, #EEBECE, #B7CBDF);
+      }
+      h1 { font-size: 4rem; font-weight: 700; }
+      h2 { font-size: 2.5rem; font-weight: 700; margin-bottom: 1.5rem; }
+      h3 { font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem; }
+      .content-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
+      .comparison-grid { display: grid; grid-template-columns: 1.5fr repeat(4, 1fr); gap: 0.5rem; width: 100%; text-align: center; }
+      .grid-header { font-weight: 700; }
+      .grid-cell { padding: 0.75rem; border-radius: 0.5rem; }
+      .grid-row-header { font-weight: 700; text-align: left; }
+      .check-mark { color: #22c55e; font-weight: 700; }
+      .pie-chart { width: 200px; height: 200px; border-radius: 50%; background: conic-gradient(#3b82f6 0% 50%, #10b981 50% 70%, #f97316 70% 85%, #ef4444 85% 95%, #8b5cf6 95% 100%); transform: perspective(1000px) rotateX(15deg) rotateY(5deg); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+      .data-card { transform: perspective(1000px) rotateX(5deg) rotateY(-2deg); box-shadow: 0 15px 30px rgba(0,0,0,0.2), 0 5px 15px rgba(0,0,0,0.1); transition: all 0.3s ease; }
+      .data-card:hover { transform: perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(-5px); box-shadow: 0 25px 50px rgba(0,0,0,0.3), 0 10px 20px rgba(0,0,0,0.2); }
+      .metric-3d { transform: perspective(1000px) rotateX(10deg) rotateY(5deg); box-shadow: 0 10px 25px rgba(0,0,0,0.15); }
+      .gradient-bg { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+      .glass-effect { background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2); }
+      .phone-mockup { width: 225px; height: 450px; border-radius: 12px; background: #fff; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06); position: relative; overflow: hidden; }
+      .feature-screenshot { width: 100%; height: 300px; border-radius: 8px; background: #fff; box-shadow: 0 2px 4px -1px rgba(0,0,0,0.1); overflow: hidden; }
+      .events-screenshot { width: 100%; height: 375px; border-radius: 8px; background: #fff; box-shadow: 0 2px 4px -1px rgba(0,0,0,0.1); overflow: hidden; }
+      .full-screenshot { width: 100%; height: 450px; border-radius: 8px; background: #fff; box-shadow: 0 2px 4px -1px rgba(0,0,0,0.1); overflow: hidden; }
+      .small-mockup { width: 120px; height: 240px; border-radius: 8px; background: #fff; box-shadow: 0 2px 4px -1px rgba(0,0,0,0.1); overflow: hidden; }
+    </style>
+  </head>
+  <body class="bg-gray-100 text-gray-800">
+    <div id="presentation-container" class="relative w-screen h-screen">
+      <!-- Slide 1: Title -->
+      <div class="slide active title-gradient text-white items-center text-center">
+        <div class="z-10 flex flex-col items-center">
+          <img src="Entire Logo.png" alt="DuoWeave Full Logo" class="w-auto h-64 mb-6" />
+          <p class="text-2xl mb-8">Where connections are woven</p>
+          <p class="text-xl bg-black/20 px-4 py-2 rounded-lg">A social platform with dual, sex-specific experiences</p>
+        </div>
+        <div class="absolute bottom-8 text-sm font-bold text-black">
+          <span>Francis Anigbogu</span> | <span>Francis@duoweave.com</span> | <span>October 7, 2025</span>
+        </div>
+      </div>
+
+      <!-- Slide 2: The Problem -->
+      <div class="slide">
+        <h2 class="text-gray-500">The Problem</h2>
+        <h1 class="mb-12">Social Media is Broken</h1>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8 text-2xl">
+          <div class="flex items-start space-x-4">
+            <span class="text-4xl">🎭</span>
+            <div>
+              <h3 class="font-semibold">Performance Over Authenticity</h3>
+              <p class="text-xl text-gray-600">Users optimize for likes, not real connection.</p>
+            </div>
+          </div>
+          <div class="flex items-start space-x-4">
+            <span class="text-4xl">🤖</span>
+            <div>
+              <h3 class="font-semibold">Algorithmic Manipulation</h3>
+              <p class="text-xl text-gray-600">Feeds designed for engagement, not well-being.</p>
+            </div>
+          </div>
+          <div class="flex items-start space-x-4">
+            <span class="text-4xl">💸</span>
+            <div>
+              <h3 class="font-semibold">Expensive, Reactive Moderation</h3>
+              <p class="text-xl text-gray-600">Traditional safety costs scale linearly.</p>
+            </div>
+          </div>
+          <div class="flex items-start space-x-4">
+            <span class="text-4xl">📉</span>
+            <div>
+              <h3 class="font-semibold">One-Size-Fits-All Experiences</h3>
+              <p class="text-xl text-gray-600">Generic feeds fail diverse communication needs.</p>
+            </div>
+          </div>
+        </div>
+        <p class="mt-16 text-3xl font-bold text-center text-red-500 p-4 bg-red-100 rounded-lg">Result: Anxiety, disconnection, platform fatigue.</p>
+      </div>
+
+      <!-- Slide 3: The Solution -->
+      <div class="slide">
+        <h2 class="text-gray-500">The Solution</h2>
+        <h1 class="mb-8">DuoWeave: Dual Sex Experiences, Unified Platform</h1>
+        <div class="flex flex-row items-center justify-around gap-12">
+          <div class="flex flex-col items-center space-y-8">
+            <div class="phone-mockup">
+              <img src="presentation/Setup screen 0.png" alt="Experience Selection" class="w-full h-full object-cover rounded-lg" />
+            </div>
+            <div class="phone-mockup">
+              <img src="presentation/Active verification screen.png" alt="Facial Verification" class="w-full h-full object-cover rounded-lg" />
+            </div>
+          </div>
+          <div class="max-w-2xl text-xl space-y-6">
+            <div class="bg-white p-4 rounded-lg shadow">
+              <h3 class="font-semibold text-2xl">🎯 Post-Signup Selection</h3>
+              <p>Choose Male or Female experience. Locked permanently after facial verification.</p>
+            </div>
+            <div class="bg-white p-4 rounded-lg shadow">
+              <h3 class="font-semibold text-2xl">🎨 Distinct Themed Experiences</h3>
+              <p>Male: Cool blues, challenge-focused. Female: Warm pinks, community-focused.</p>
+            </div>
+            <div class="bg-white p-4 rounded-lg shadow">
+              <h3 class="font-semibold text-2xl">🛡️ Revolutionary Safety</h3>
+              <p>Community-driven moderation, AI-first screening, multi-tier verification.</p>
+            </div>
+            <div class="bg-white p-4 rounded-lg shadow">
+              <h3 class="font-semibold text-2xl">⚡ Built-In AI Utilities</h3>
+              <p><strong>Real-time translation</strong> | <strong>AI fact-checking APIs</strong> | <strong>Deepfake detection</strong> | <strong>Content verification</strong></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 4: User Onboarding Flow -->
+      <div class="slide">
+        <h2 class="text-gray-500">User Experience</h2>
+        <h1 class="mb-8">Seamless Onboarding & Verification</h1>
+        <div class="flex items-center justify-center gap-6">
+          <div class="phone-mockup">
+            <img src="presentation/Setup screen 0.png" alt="Experience Selection" class="w-full h-full object-contain rounded-lg" />
+          </div>
+          <div class="phone-mockup">
+            <img src="presentation/Active verification screen.png" alt="Facial Verification" class="w-full h-full object-contain rounded-lg" />
+          </div>
+          <div class="phone-mockup">
+            <img src="presentation/example of successful verification screen.png" alt="Successful Verification" class="w-full h-full object-contain rounded-lg" />
+          </div>
+          <div class="phone-mockup">
+            <img src="presentation/example of failed verification screen.png" alt="Failed Verification" class="w-full h-full object-contain rounded-lg" />
+          </div>
+          <div class="phone-mockup">
+            <img src="presentation/account creation page.png" alt="Sign Up" class="w-full h-full object-contain rounded-lg" />
+          </div>
+        </div>
+        <div class="mt-8 text-center">
+          <h3 class="text-2xl font-bold mb-4">Complete Onboarding & Verification Flow</h3>
+          <div class="flex justify-center space-x-4 text-sm">
+            <div class="text-center">
+              <div class="w-10 h-10 bg-blue-500 text-white rounded-full flex items-center justify-center mx-auto mb-2">1</div>
+              <p class="font-semibold">Choose Experience</p>
+              <p class="text-gray-600 text-xs">Select Male or Female</p>
+            </div>
+            <div class="text-center">
+              <div class="w-10 h-10 bg-blue-500 text-white rounded-full flex items-center justify-center mx-auto mb-2">2</div>
+              <p class="font-semibold">Facial Scan</p>
+              <p class="text-gray-600 text-xs">DeepFace Analysis</p>
+            </div>
+            <div class="text-center">
+              <div class="w-10 h-10 bg-green-500 text-white rounded-full flex items-center justify-center mx-auto mb-2">3</div>
+              <p class="font-semibold">Success</p>
+              <p class="text-gray-600 text-xs">Verification Passed</p>
+            </div>
+            <div class="text-center">
+              <div class="w-10 h-10 bg-red-500 text-white rounded-full flex items-center justify-center mx-auto mb-2">4</div>
+              <p class="font-semibold">Failure</p>
+              <p class="text-gray-600 text-xs">Retry Required</p>
+            </div>
+            <div class="text-center">
+              <div class="w-10 h-10 bg-blue-500 text-white rounded-full flex items-center justify-center mx-auto mb-2">5</div>
+              <p class="font-semibold">Create Account</p>
+              <p class="text-gray-600 text-xs">Join Community</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 5: Product Demo -->
+      <div class="slide">
+        <h2 class="text-gray-500">Product Demo</h2>
+        <div class="flex items-center gap-4 mb-8">
+          <img src="Logo.png" alt="DuoWeave Spool Icon" class="h-16 w-16" />
+          <h1>Core Features</h1>
+        </div>
+        <div class="flex gap-12">
+          <div class="w-1/2">
+            <div class="grid grid-cols-2 gap-4">
+              <div class="full-screenshot">
+                <img src="presentation/Home screen of the app.png" alt="Smart Feed" class="w-full h-full object-contain" />
+              </div>
+              <div class="full-screenshot">
+                <img src="presentation/Challenges screen.png" alt="Challenges" class="w-full h-full object-contain" />
+              </div>
+              <div class="full-screenshot">
+                <img src="presentation/Circles screen.png" alt="Circles" class="w-full h-full object-contain" />
+              </div>
+              <div class="full-screenshot">
+                <img src="presentation/Rooms screen.png" alt="Rooms" class="w-full h-full object-contain" />
+              </div>
+            </div>
+          </div>
+          <div class="w-1/2 text-xl space-y-4">
+            <h3 class="font-bold text-2xl mb-4">Core App Features</h3>
+            <div class="space-y-4 text-lg">
+              <div class="bg-blue-50 p-4 rounded-lg">
+                <h4 class="font-bold text-lg">🏠 Home Feed</h4>
+                <p class="text-gray-700">Smart algorithm showing 60% personalized content + 40% exploratory posts. Real-time updates with live rooms indicator.</p>
+              </div>
+              <div class="bg-green-50 p-4 rounded-lg">
+                <h4 class="font-bold text-lg">🏆 Challenges</h4>
+                <p class="text-gray-700">Gamified growth system with fitness, writing, and environmental challenges. Progress tracking, rewards, and community engagement.</p>
+              </div>
+              <div class="bg-purple-50 p-4 rounded-lg">
+                <h4 class="font-bold text-lg">👥 Circles</h4>
+                <p class="text-gray-700">Private communities (6-8 members) for tech enthusiasts, fitness buddies. Invite-only with creator verification and activity tracking.</p>
+              </div>
+              <div class="bg-orange-50 p-4 rounded-lg">
+                <h4 class="font-bold text-lg">🏠 Rooms</h4>
+                <p class="text-gray-700">Live discussion rooms for tech talks, fitness sessions, creative workshops. Real-time messaging with participant tracking.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 6: Events & Discovery -->
+      <div class="slide">
+        <h2 class="text-gray-500">Product Demo</h2>
+        <div class="flex items-center gap-4 mb-8">
+          <img src="Logo.png" alt="DuoWeave Spool Icon" class="h-16 w-16" />
+          <h1>Events & Discovery Features</h1>
+        </div>
+        <div class="flex gap-12">
+          <div class="w-1/2">
+            <div class="grid grid-cols-1 gap-6">
+              <div class="full-screenshot">
+                <img src="presentation/screenshot of the search page showing the events.png" alt="Events List" class="w-full h-full object-contain" />
+              </div>
+              <div class="full-screenshot">
+                <img src="presentation/screenshot of the search page showing the events map.png" alt="Events Map" class="w-full h-full object-contain" />
+              </div>
+            </div>
+          </div>
+          <div class="w-1/2 text-xl space-y-4">
+            <h3 class="font-bold text-2xl mb-4">Advanced Search & Discovery</h3>
+            <div class="space-y-4 text-lg">
+              <div class="bg-blue-50 p-4 rounded-lg">
+                <h4 class="font-bold text-lg">📋 Events List View</h4>
+                <p class="text-gray-700">Comprehensive event browsing with category filters (Music, Sports, Arts, Food, Technology, Business, Education, Health, Family, Comedy, Networking). Real-time attendee counts and social proof.</p>
+              </div>
+              <div class="bg-green-50 p-4 rounded-lg">
+                <h4 class="font-bold text-lg">🗺️ Interactive Map View</h4>
+                <p class="text-gray-700">Geographic event discovery with Dallas-Fort Worth area coverage. Orange markers for events, blue markers for selected events. Zoom controls and location-based recommendations.</p>
+              </div>
+              <div class="bg-purple-50 p-4 rounded-lg">
+                <h4 class="font-bold text-lg">🔍 Smart Search</h4>
+                <p class="text-gray-700">Global search across hashtags, people, posts, and circles. Event-specific search with clear filters. Real-time results with relevance scoring.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 7: Safety & Moderation -->
+      <div class="slide">
+        <h2 class="text-gray-500">Innovation</h2>
+        <h1 class="mb-8">Community-Driven Safety That Pays</h1>
+        <div class="flex items-center justify-center mb-12">
+          <div class="flex items-center space-x-4 text-center text-lg font-semibold">
+            <div class="p-6 bg-white rounded-lg shadow-md">Post</div>
+            <span class="text-4xl text-gray-400">&rarr;</span>
+            <div class="p-6 rounded-lg shadow-md" style="background-color: #F9FAFB;">AI Scan</div>
+            <span class="text-4xl text-gray-400">&rarr;</span>
+            <div class="p-6 rounded-lg shadow-md" style="background-color: #FCF8F9;">Community Review</div>
+            <span class="text-4xl text-gray-400">&rarr;</span>
+            <div class="p-6 bg-green-100 rounded-lg shadow-md">Rewards</div>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-8 text-xl">
+          <div class="bg-red-50 p-6 rounded-lg border border-red-200">
+            <h3 class="font-bold text-2xl mb-4">Traditional Model</h3>
+            <ul class="list-disc list-inside space-y-2">
+              <li>❌ Reactive, expensive ($2-5M/year at scale)</li>
+              <li>❌ Slow response times</li>
+              <li>❌ No user investment</li>
+            </ul>
+          </div>
+          <div class="bg-green-50 p-6 rounded-lg border border-green-200">
+            <h3 class="font-bold text-2xl mb-4">DuoWeave Model</h3>
+            <ul class="list-disc list-inside space-y-2">
+              <li>✅ First 5 accurate reporters earn rewards</li>
+              <li>✅ AI pre-screening (60% cost reduction)</li>
+              <li>✅ Users financially invested in quality</li>
+              <li>✅ Heavy penalties for false reports</li>
+            </ul>
+          </div>
+        </div>
+        <div class="mt-12 text-center text-2xl font-bold data-card bg-white p-6 rounded-lg">
+          <p>Cost Impact: <span class="text-green-600">60-80% moderation savings</span></p>
+          <p>Quality Impact: <span class="text-green-600">Higher trust, faster response</span></p>
+        </div>
+      </div>
+
+      <!-- Slide 6: Market Opportunity -->
+      <div class="slide">
+        <h2 class="text-gray-500">The Opportunity</h2>
+        <h1 class="mb-8">$50B+ Market, Perfect Timing</h1>
+        <div class="flex gap-12">
+          <div class="w-1/2 flex flex-col justify-center items-center">
+            <div class="relative w-96 h-96">
+              <div class="absolute inset-0 bg-blue-200 rounded-full flex items-center justify-center data-card">
+                <div class="text-center">
+                  <p class="font-bold text-xl">TAM: $50B+</p>
+                  <p>(Global Social)</p>
+                </div>
+              </div>
+              <div class="absolute inset-12 bg-blue-300 rounded-full flex items-center justify-center data-card">
+                <div class="text-center">
+                  <p class="font-bold text-lg">SAM: $15B+</p>
+                  <p>(Authentic/Wellness)</p>
+                </div>
+              </div>
+              <div class="absolute inset-24 bg-blue-400 text-white rounded-full flex items-center justify-center data-card">
+                <div class="text-center">
+                  <p class="font-bold">SOM: $500M+</p>
+                  <p>(Niche High-Engagement)</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="w-1/2 text-xl space-y-6">
+            <div>
+              <h3 class="font-bold text-2xl">👥 Target Users</h3>
+              <p>Primary: Ages 22-35 seeking authentic connection.</p>
+              <p>Secondary: Ages 18-45, professionals & creators.</p>
+              <p>Geography: US, UK, Canada, Australia (initial).</p>
+            </div>
+            <div>
+              <h3 class="font-bold text-2xl">⏰ Why Now?</h3>
+              <ul class="list-disc list-inside">
+                <li>Social media fatigue at all-time high</li>
+                <li>AI safety technology finally mature</li>
+                <li>Regulatory pressure on platform safety</li>
+                <li>Gen Z/Millennial demand for authenticity</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 7: Competition -->
+      <div class="slide">
+        <h2 class="text-gray-500">Competition</h2>
+        <div class="flex items-center gap-4 mb-8">
+          <img src="Logo.png" alt="DuoWeave Spool Icon" class="h-16 w-16" />
+          <h1>How We're Different</h1>
+        </div>
+        <div class="comparison-grid text-lg bg-white p-4 rounded-lg shadow-md">
+          <div class="grid-header"></div>
+          <div class="grid-header">Experience</div>
+          <div class="grid-header">Verification</div>
+          <div class="grid-header">Safety Model</div>
+          <div class="grid-header">Authentic Focus</div>
+          <div class="grid-row-header grid-cell bg-gray-50">Instagram</div>
+          <div class="grid-cell bg-gray-50">Single</div>
+          <div class="grid-cell bg-gray-50">Basic</div>
+          <div class="grid-cell bg-gray-50">Reactive</div>
+          <div class="grid-cell bg-gray-50">Low</div>
+          <div class="grid-row-header grid-cell">Twitter/X</div>
+          <div class="grid-cell">Single</div>
+          <div class="grid-cell">Paid only</div>
+          <div class="grid-cell">Reactive</div>
+          <div class="grid-cell">Low</div>
+          <div class="grid-row-header grid-cell bg-gray-50">Discord</div>
+          <div class="grid-cell bg-gray-50">Single</div>
+          <div class="grid-cell bg-gray-50">None</div>
+          <div class="grid-cell bg-gray-50">Community</div>
+          <div class="grid-cell bg-gray-50">Medium</div>
+          <div class="grid-row-header grid-cell">BeReal</div>
+          <div class="grid-cell">Single</div>
+          <div class="grid-cell">None</div>
+          <div class="grid-cell">Time-based</div>
+          <div class="grid-cell">High</div>
+          <div class="grid-row-header grid-cell" style="background-color: #F9FAFB;">DuoWeave</div>
+          <div class="grid-cell check-mark" style="background-color: #F9FAFB;">DUAL ✓</div>
+          <div class="grid-cell check-mark" style="background-color: #F9FAFB;">Multi-tier ✓</div>
+          <div class="grid-cell check-mark" style="background-color: #F9FAFB;">Incentive ✓</div>
+          <div class="grid-cell check-mark" style="background-color: #F9FAFB;">High ✓</div>
+        </div>
+        <div class="mt-12">
+          <h3 class="text-2xl font-bold">Our Moat:</h3>
+          <div class="grid grid-cols-2 gap-x-8 gap-y-4 mt-4 text-lg">
+            <p>🧵 Network effects around authentic micro-communities</p>
+            <p>🔒 Facial verification creates trust + permanence</p>
+            <p>💰 Community investment in platform quality</p>
+            <p>🏗️ Technical complexity of dual-experience architecture</p>
+            <p>📊 Sex-specific behavioral data enables superior targeting</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 8: Business Model -->
+      <div class="slide">
+        <h2 class="text-gray-500">Business Model</h2>
+        <h1 class="mb-8">Multiple Revenue Streams</h1>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+          <div>
+            <h3 class="font-bold text-2xl mb-4">💰 Revenue Sources (Year 3)</h3>
+            <div class="space-y-3 text-xl">
+              <p><b>65%</b> Advertising (native, targeted, high-value)</p>
+              <p><b>20%</b> Subscriptions (premium features, verification tiers)</p>
+              <p><b>10%</b> Entity Accounts ($99-299/mo per business)</p>
+              <p><b>5%</b> API/Data Access</p>
+            </div>
+            <h3 class="font-bold text-2xl mt-8 mb-4">Advertising Revenue Model</h3>
+            <div class="space-y-3 text-lg">
+              <p><b>Native Ads:</b> $15-25 CPM (high-value, targeted)</p>
+              <p><b>Sponsored Content:</b> $5,000-15,000 per campaign</p>
+              <p><b>Event Promotions:</b> $2,000-8,000 per event</p>
+              <p><b>Premium Placements:</b> $10,000-50,000 per month</p>
+            </div>
+            <div class="mt-6 p-4 bg-blue-50 rounded-lg">
+              <h4 class="font-bold text-lg mb-2">Why High-Value Advertising?</h4>
+              <p class="text-gray-700">Verified users, authentic engagement, and sex-specific targeting command premium ad rates.</p>
+            </div>
+          </div>
+          <div>
+            <h3 class="font-bold text-2xl mb-4">📊 Unit Economics (Planned)</h3>
+            <div class="grid grid-cols-2 gap-4 text-center">
+              <div class="metric-3d bg-white p-4 rounded-lg">
+                <div class="text-3xl font-bold">$15-25</div>
+                <div class="text-gray-600">CAC</div>
+              </div>
+              <div class="metric-3d bg-white p-4 rounded-lg">
+                <div class="text-3xl font-bold text-green-600">$220-300</div>
+                <div class="text-gray-600">LTV</div>
+              </div>
+              <div class="metric-3d bg-white p-4 rounded-lg">
+                <div class="text-3xl font-bold">6-10</div>
+                <div class="text-gray-600">Payback (Months)</div>
+              </div>
+              <div class="metric-3d bg-white p-4 rounded-lg">
+                <div class="text-3xl font-bold">88%+</div>
+                <div class="text-gray-600">Gross Margin</div>
+              </div>
+            </div>
+            <div class="mt-6 text-center data-card bg-green-100 p-4 rounded-lg">
+              <p class="text-3xl font-bold text-green-700">LTV:CAC Ratio: 10-14x</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 9: Traction & Status -->
+      <div class="slide">
+        <h2 class="text-gray-500">Traction & Status</h2>
+        <h1 class="mb-8">MVP Complete, Early Beta Results</h1>
+        <div class="grid grid-cols-2 gap-12 text-xl">
+          <div class="space-y-4">
+            <p class="flex items-center"><span class="text-2xl text-green-500 mr-3">✅</span> Full Stack Implemented</p>
+            <ul class="list-disc list-inside ml-8 space-y-1 text-gray-700">
+              <li>Authentication + facial verification ready</li>
+              <li>Posts, comments, likes, shares (optimistic UI)</li>
+              <li>Real-time chat (Socket.io + Expo push)</li>
+              <li>AI/ML recommendation engines</li>
+              <li>Moderation framework operational</li>
+            </ul>
+            <p class="flex items-center mt-6"><span class="text-2xl text-green-500 mr-3">✅</span> Security Hardened</p>
+            <ul class="list-disc list-inside ml-8 space-y-1 text-gray-700">
+              <li>All API keys backend-only</li>
+              <li>Rate-limited proxy endpoints</li>
+              <li>CORS configured for production</li>
+            </ul>
+          </div>
+          <div class="space-y-4">
+            <p class="flex items-center"><span class="text-2xl text-green-500 mr-3">✅</span> Deployment Ready</p>
+            <ul class="list-disc list-inside ml-8 space-y-1 text-gray-700">
+              <li>Frontend: Vercel</li>
+              <li>Backend: Railway (Node + Python)</li>
+              <li>Database: MongoDB Atlas</li>
+              <li>DNS: Cloudflare</li>
+              <li>Email: Resend → SES at scale</li>
+            </ul>
+            <div class="mt-8 p-6 data-card bg-gradient-to-r from-green-100 to-blue-100 rounded-lg border-l-4 border-green-500">
+              <h4 class="font-bold text-xl mb-2 text-green-800">🎯 Early Beta Results (August 2024)</h4>
+              <p class="text-lg text-gray-700">40 individuals tested core features with <span class="font-bold text-green-600">positive feedback</span> on verification process, user experience, and community features.</p>
+            </div>
+            <div class="mt-6 text-center data-card bg-blue-100 p-6 rounded-lg">
+              <p class="text-3xl font-bold text-blue-800">📅 Ready for beta launch Q4 2025</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 10: Go-To-Market -->
+      <div class="slide">
+        <h2 class="text-gray-500">Go-To-Market</h2>
+        <h1 class="mb-8">Phased Launch Strategy</h1>
+        <div class="flex items-center space-x-4 relative">
+          <div class="absolute top-1/2 left-0 w-full h-1 bg-gray-300" style="transform: translateY(-50%);"></div>
+          <div class="relative z-10 w-1/3 bg-gray-100 p-6 rounded-lg border-2" style="border-color: #EEBECE;">
+            <h3 class="font-bold text-xl">Phase 1: Private Beta (Months 0-6)</h3>
+            <ul class="list-disc list-inside mt-2 text-gray-700">
+              <li>100 Male + 100 Female users</li>
+              <li>Iterate onboarding & moderation</li>
+              <li>Validate incentive model</li>
+              <li class="font-bold mt-2">Target: 1,000 active users</li>
+            </ul>
+          </div>
+          <div class="relative z-10 w-1/3 bg-gray-100 p-6 rounded-lg border-2" style="border-color: #B7CBDF;">
+            <h3 class="font-bold text-xl">Phase 2: Growth (Months 7-18)</h3>
+            <ul class="list-disc list-inside mt-2 text-gray-700">
+              <li>Creator partnerships</li>
+              <li>PR in tech & wellness media</li>
+              <li>App store optimization</li>
+              <li class="font-bold mt-2">Target: 10,000 active users</li>
+            </ul>
+          </div>
+          <div class="relative z-10 w-1/3 bg-gray-100 p-6 rounded-lg border-2 border-green-300">
+            <h3 class="font-bold text-xl">Phase 3: Scale (Months 19-36)</h3>
+            <ul class="list-disc list-inside mt-2 text-gray-700">
+              <li>B2B entity accounts launch</li>
+              <li>International expansion</li>
+              <li>Advanced AI features</li>
+              <li class="font-bold mt-2">Target: 100,000+ users → Profitability</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 11: Scaling Plan -->
+      <div class="slide">
+        <h2 class="text-gray-500">Scaling Plan</h2>
+        <h1 class="mb-8">Built to Scale Efficiently</h1>
+        <div class="mb-8 p-6 bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg border-l-4 border-blue-500">
+          <h3 class="font-bold text-xl mb-2 text-blue-800">📱 Native App Development Roadmap</h3>
+          <p class="text-lg text-gray-700">Phase 1: React Native MVP → Phase 2: Native iOS (Swift) + Android (Kotlin) for optimal performance, platform-specific features, and superior user experience.</p>
+        </div>
+        <div class="grid grid-cols-2 gap-12">
+          <div>
+            <h3 class="font-bold text-2xl mb-4">Communication Stack Evolution</h3>
+            <p class="mb-2"><b>Phase 0-3 (0-500K users):</b> Socket.io, Twilio, Agora, Resend</p>
+            <p class="text-lg text-gray-600 mb-6">Cost: $500-1,600/mo</p>
+            <p class="mb-2"><b>Phase 4 (500K-1M users):</b> Migrate to managed services</p>
+            <ul class="list-disc list-inside ml-4 space-y-1 text-green-700">
+              <li>Socket.io → Ably (saves $17.8k/mo)</li>
+              <li>SMS: Wholesale + smart routing (60-80% reduction)</li>
+              <li>Video: Agora P2P + enterprise (70% savings)</li>
+              <li>Email: Resend → Amazon SES (50% savings)</li>
+            </ul>
+            <p class="mt-4 font-bold text-xl">Total savings: $6,680/mo = $80K/year</p>
+          </div>
+          <div class="text-lg">
+            <h3 class="font-bold text-2xl mb-4">Key Insight: Costs DROP as % of revenue</h3>
+            <div class="space-y-4">
+              <div class="w-full bg-gray-200 rounded-full h-8 data-card">
+                <div class="h-8 rounded-full flex items-center justify-end pr-2 text-white font-bold whitespace-nowrap" style="width: 80%; background-color: #EEBECE;">Phase 2: 0.8%</div>
+              </div>
+              <div class="w-full bg-gray-200 rounded-full h-8 data-card">
+                <div class="h-8 rounded-full flex items-center justify-center text-white font-bold text-sm whitespace-nowrap" style="width: 20%; background-color: #B7CBDF;">Phase 4: 0.09%</div>
+              </div>
+              <div class="w-full bg-gray-200 rounded-full h-8 data-card">
+                <div class="bg-green-400 h-8 rounded-full flex items-center justify-center text-white font-bold text-sm whitespace-nowrap" style="width: 15%">Phase 6: 0.06%</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 12: Financials -->
+      <div class="slide">
+        <h2 class="text-gray-500">Financial Projections</h2>
+        <h1 class="mb-8">Path to Profitability</h1>
+        <div class="grid grid-cols-3 gap-8 text-center">
+          <div class="data-card bg-white p-6 rounded-lg">
+            <h3 class="font-bold text-3xl">Year 1 (2025)</h3>
+            <p class="text-5xl font-bold my-4">15,000</p>
+            <p class="text-gray-600 text-lg mb-4">active users</p>
+            <p class="text-2xl font-semibold">$180K revenue</p>
+            <p class="text-sm text-gray-600">$12/user ARPU</p>
+            <p class="mt-4 text-red-500">Investment Phase</p>
+          </div>
+          <div class="data-card bg-white p-6 rounded-lg">
+            <h3 class="font-bold text-3xl">Year 2 (2026)</h3>
+            <p class="text-5xl font-bold my-4">150,000</p>
+            <p class="text-gray-600 text-lg mb-4">active users</p>
+            <p class="text-2xl font-semibold">$4.5M ARR</p>
+            <p class="text-sm text-gray-600">$30/user ARPU</p>
+            <p class="mt-4 text-yellow-500">Break-even Approached</p>
+          </div>
+          <div class="data-card bg-white p-6 rounded-lg border-4 border-green-400">
+            <h3 class="font-bold text-3xl">Year 3 (2027)</h3>
+            <p class="text-5xl font-bold my-4">750,000</p>
+            <p class="text-gray-600 text-lg mb-4">active users</p>
+            <p class="text-2xl font-semibold">$33M ARR</p>
+            <p class="text-sm text-gray-600">$44/user ARPU</p>
+            <p class="mt-4 text-green-600 text-2xl font-extrabold">PROFITABLE 💰</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 13: Team & The Ask -->
+      <div class="slide">
+        <h2 class="text-gray-500">The Ask</h2>
+        <div class="flex items-center gap-4">
+          <img src="Logo.png" alt="DuoWeave Spool Icon" class="h-16 w-16" />
+          <h1>Team & Funding</h1>
+        </div>
+        <div class="grid grid-cols-2 gap-12 mt-8">
+          <div>
+            <h3 class="font-bold text-2xl mb-4">Team</h3>
+            <p class="font-semibold">Current Team:</p>
+            <p class="mb-4">👤 Founder/CEO: Product vision, fundraising, strategy</p>
+            <p class="font-semibold">Hiring (with this round):</p>
+            <ul class="list-disc list-inside ml-4">
+              <li>👨‍💻 CTO (~30% equity): Backend/AI/ML, scaling</li>
+              <li>👥 Head of Community (1-2% ESOP): Growth, moderation ops</li>
+              <li>💼 BizDev Lead (1-2% ESOP): Partnerships, monetization</li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="font-bold text-2xl mb-4 text-center">💰 Raising: <span class="text-blue-600">$1.2M Seed</span></h3>
+            <div class="flex items-center gap-8">
+              <div class="pie-chart"></div>
+              <div>
+                <h4 class="font-semibold text-xl mb-2">Use of Funds (12-15 months):</h4>
+                <ul class="text-lg">
+                  <li><span class="text-blue-600 font-bold">50%</span> Team (CTO + 2-3 engineers)</li>
+                  <li><span class="text-green-600 font-bold">20%</span> Infrastructure & APIs</li>
+                  <li><span class="text-orange-500 font-bold">15%</span> Marketing (creator partnerships)</li>
+                  <li><span class="text-red-500 font-bold">10%</span> Office + O-1 visa/legal</li>
+                  <li><span class="text-purple-600 font-bold">5%</span> Buffer for scaling</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 14: Appendix -->
+      <div class="slide">
+        <h2 class="text-gray-500">Appendix</h2>
+        <h1 class="mb-8">Technical Architecture & Costs</h1>
+        <div class="grid grid-cols-2 gap-12">
+          <div>
+            <h3 class="font-bold text-2xl mb-4">Tech Stack & Scaling Plan</h3>
+            <ul class="list-disc list-inside">
+              <li><b>Current MVP:</b> React (Vite) + React Native wrapper</li>
+              <li><b>Scale Phase:</b> Native iOS (Swift) + Android (Kotlin) apps</li>
+              <li><b>Backend:</b> Node.js + Python (Flask)</li>
+              <li><b>Database:</b> MongoDB Atlas (sharded at scale)</li>
+              <li><b>Real-time:</b> Socket.io → Ably transition</li>
+              <li><b>APIs:</b> Agora, Twilio, AWS SES, OpenAI, etc.</li>
+            </ul>
+            <div class="mt-6 p-4 bg-gray-200 rounded-lg">
+              <h4 class="font-bold text-xl mb-2">Security</h4>
+              <p>All keys backend-only, rate-limited proxies, CORS configured, facial verification for integrity.</p>
+            </div>
+          </div>
+          <div>
+            <h3 class="font-bold text-2xl mb-4">Communication Cost Evolution</h3>
+            <table class="w-full text-left">
+              <thead class="bg-gray-200">
+                <tr>
+                  <th class="p-2">Phase</th>
+                  <th class="p-2">Users</th>
+                  <th class="p-2">Monthly Cost</th>
+                  <th class="p-2">% of Revenue</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="border-b">
+                  <td class="p-2">1</td>
+                  <td class="p-2">1-10K</td>
+                  <td class="p-2">$169</td>
+                  <td class="p-2">N/A</td>
+                </tr>
+                <tr class="border-b bg-gray-50">
+                  <td class="p-2">2</td>
+                  <td class="p-2">10-100K</td>
+                  <td class="p-2">$500</td>
+                  <td class="p-2">0.8%</td>
+                </tr>
+                <tr class="border-b">
+                  <td class="p-2">3</td>
+                  <td class="p-2">100-500K</td>
+                  <td class="p-2">$1,600</td>
+                  <td class="p-2">0.2%</td>
+                </tr>
+                <tr class="border-b bg-gray-50">
+                  <td class="p-2">4</td>
+                  <td class="p-2">0.5-1M</td>
+                  <td class="p-2">$2,820</td>
+                  <td class="p-2">0.09%</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="absolute bottom-8 right-8 flex items-center space-x-4">
+      <button id="prevBtn" class="bg-white rounded-full p-3 shadow-md hover:bg-gray-200 transition" aria-label="Previous slide">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+      </button>
+      <span id="slide-counter" class="text-lg font-semibold text-gray-700">1 / 16</span>
+      <button id="nextBtn" class="bg-white rounded-full p-3 shadow-md hover:bg-gray-200 transition" aria-label="Next slide">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+      </button>
+    </div>
+
+    <script>
+      const slides = document.querySelectorAll('.slide');
+      const prevBtn = document.getElementById('prevBtn');
+      const nextBtn = document.getElementById('nextBtn');
+      const slideCounter = document.getElementById('slide-counter');
+      let currentSlide = 0;
+      const totalSlides = slides.length;
+      function showSlide(index) {
+        slides.forEach((slide, i) => {
+          slide.classList.remove('active');
+          if (i === index) slide.classList.add('active');
+        });
+        slideCounter.textContent = `${index + 1} / ${totalSlides}`;
+        prevBtn.disabled = index === 0;
+        nextBtn.disabled = index === totalSlides - 1;
+        prevBtn.classList.toggle('opacity-50', index === 0);
+        nextBtn.classList.toggle('opacity-50', index === totalSlides - 1);
+      }
+      function nextSlide() { if (currentSlide < totalSlides - 1) { currentSlide++; showSlide(currentSlide); } }
+      function prevSlide() { if (currentSlide > 0) { currentSlide--; showSlide(currentSlide); } }
+      nextBtn.addEventListener('click', nextSlide);
+      prevBtn.addEventListener('click', prevSlide);
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'ArrowRight') nextSlide();
+        else if (event.key === 'ArrowLeft') prevSlide();
+      });
+      showSlide(currentSlide);
+    </script>
+  </body>
+</html>
+
+
