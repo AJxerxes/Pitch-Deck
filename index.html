@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <title>DuoWeave 3-Month Bridge Pitch Deck</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -18,10 +18,18 @@
       }
     </style>
     <style>
+      :root {
+        --space: clamp(12px, 2vw, 24px);
+        --h1: clamp(28px, 6vw, 64px);
+        --h2: clamp(22px, 4.5vw, 40px);
+        --h3: clamp(18px, 3.8vw, 28px);
+        --body: clamp(15px, 3.2vw, 20px);
+      }
       body {
         font-family: 'Merriweather', 'Inter', 'Quicksand', serif;
         overflow: hidden;
         background: linear-gradient(135deg, #F9FAFB 0%, #B7CBDF 100%);
+        font-size: var(--body);
       }
       .slide {
         display: none;
@@ -43,9 +51,9 @@
         background-size: 200% 200%;
         animation: gradientShift 3s ease infinite;
       }
-      h1 { font-size: 4rem; font-weight: 700; }
-      h2 { font-size: 2.5rem; font-weight: 700; margin-bottom: 1.5rem; }
-      h3 { font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem; }
+      h1 { font-size: var(--h1); font-weight: 700; }
+      h2 { font-size: var(--h2); font-weight: 700; margin-bottom: 1.5rem; }
+      h3 { font-size: var(--h3); font-weight: 600; margin-bottom: 1rem; }
       .content-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
       .comparison-grid { display: grid; grid-template-columns: 1.5fr repeat(4, 1fr); gap: 0.5rem; width: 100%; text-align: center; }
       .grid-header { font-weight: 700; }
@@ -65,14 +73,16 @@
       .small-mockup { width: 120px; height: 240px; border-radius: 8px; background: #fff; box-shadow: 0 2px 4px -1px rgba(0,0,0,0.1); overflow: hidden; }
        /* Mobile responsiveness tweaks */
       @media (max-width: 768px) {
-        .slide { padding: 1.5rem 1rem; }
+        #presentation-container { height: auto; overflow: visible; }
+        .slide { padding: calc(var(--space) * 1.25) var(--space); height: auto; min-height: 100svh; position: relative; }
         h1 { font-size: 2.25rem; }
         h2 { font-size: 1.75rem; }
         h3 { font-size: 1.25rem; }
         .phone-mockup { width: 180px; height: 360px; }
-        .feature-screenshot { height: 220px; }
-        .events-screenshot { height: 260px; }
-        .full-screenshot { height: 320px; }
+        .feature-screenshot { height: clamp(220px, 40vh, 360px); }
+        .events-screenshot { height: clamp(240px, 42vh, 380px); }
+        .full-screenshot { height: clamp(260px, 45vh, 420px); }
+        .full-screenshot img, .feature-screenshot img, .events-screenshot img { object-fit: cover; }
         .grid { grid-template-columns: 1fr; }
         .flex { flex-direction: column; }
       }
@@ -1246,6 +1256,25 @@
         else if (event.key === 'ArrowLeft') prevSlide();
       });
       showSlide(currentSlide);
+
+      // Mobile mode class toggle (portrait or small width)
+      function setMode() {
+        const isPortrait = window.matchMedia('(orientation: portrait)').matches;
+        document.body.classList.toggle('mobile-mode', isPortrait || window.innerWidth <= 768);
+      }
+      setMode();
+      window.addEventListener('resize', setMode);
+      window.addEventListener('orientationchange', setMode);
+
+      // Swipe navigation for mobile
+      let sx = 0, sy = 0;
+      document.addEventListener('touchstart', e => { if (!e.touches[0]) return; sx = e.touches[0].clientX; sy = e.touches[0].clientY; }, {passive:true});
+      document.addEventListener('touchend', e => {
+        if (!e.changedTouches[0]) return;
+        const dx = e.changedTouches[0].clientX - sx;
+        const dy = e.changedTouches[0].clientY - sy;
+        if (Math.abs(dx) > 48 && Math.abs(dy) < 40) { dx < 0 ? nextSlide() : prevSlide(); }
+      }, {passive:true});
     </script>
     <script src="js/enhancements.js"></script>
   </body>
